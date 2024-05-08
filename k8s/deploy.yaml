@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-magic-box
+  labels:
+    app: k8s-magic-box
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8s-magic-box
+  template:
+    metadata:
+      name: k8s-magic-box
+      labels:
+        app: k8s-magic-box
+    spec:
+      containers:
+        - name: k8s-magic-box
+          image: k8s-magic-box:1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
+      
